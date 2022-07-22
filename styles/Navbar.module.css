@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+}
+
+.container h3 {
+  font-weight: bold;
+}
+
+.linksContainer,
+.navigationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.navigationContainer button {
+  margin: 0 5px;
+}
+
+.linksContainer button:nth-child(1),
+.linksContainer button:nth-child(2) {
+  margin-right: 5px;
+}
