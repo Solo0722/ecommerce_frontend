@@ -14,6 +14,7 @@
     "@sanity/client": "^3.3.2",
     "@sanity/image-url": "^1.0.1",
     "@stripe/stripe-js": "^1.32.0",
+    "animate.css": "^4.1.1",
     "antd": "^4.21.7",
     "canvas-confetti": "^1.5.1",
     "next": "12.1.6",

@@ -9,8 +9,8 @@ const Banner = ({ item }) => {
       style={{ backgroundImage: `url(/${item.background})` }}
     >
       <p>{item.brand}</p>
-      <h2>{item.price}</h2>
-      <h1>{item.name}</h1>
+      <h2 className="animate__animated animate__fadeInUp">{item.price}</h2>
+      <h1 className="animate__animated animate__fadeInUp">{item.name}</h1>
       <Button type="primary">Shop now</Button>
       <div className={bannerStyles.bannerDescription}>
         <h3>Description</h3>

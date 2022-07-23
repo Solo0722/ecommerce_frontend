@@ -1,3 +1,24 @@
 .homeContainer {
   padding: 1.5rem;
 }
+
+.secondaryContainer h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 40px;
+  font-size: 2.5rem;
+}
+
+.brandsContainer {
+  width: 300px;
+  height: 300px;
+  padding: 0 20px;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.brandsContainer img {
+  width: 100%;
+  height: 90%;
+  transition: 0.5s all ease-in-out;
+}

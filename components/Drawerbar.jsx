@@ -39,7 +39,7 @@ const Drawerbar = () => {
         }
       />
       <Drawer
-        title="Shopping Cart"
+        title="Shopping Cart (2 items)"
         placement="right"
         onClose={onClose}
         visible={visible}

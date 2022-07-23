@@ -13,6 +13,7 @@ import React from "react";
 import navStyles from "../styles/Navbar.module.css";
 import { useRouter } from "next/router";
 import Drawerbar from "./Drawerbar";
+import Image from "next/image";
 
 const categoryMenu = (
   <Menu
@@ -184,7 +185,7 @@ const Navbar = () => {
 
   return (
     <nav className={navStyles.container}>
-      <h3>Streamline</h3>
+      <Image src="/ripple.png" alt="logo" width="30px" height="30px" />
 
       <div className={navStyles.navigationContainer}>
         <Button
