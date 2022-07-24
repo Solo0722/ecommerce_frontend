@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 
-const auth = () => {
+const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(true);
 
   const [form] = Form.useForm();
@@ -121,4 +121,4 @@ const auth = () => {
   );
 };
 
-export default auth;
+export default Auth;
