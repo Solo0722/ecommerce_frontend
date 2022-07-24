@@ -34,8 +34,7 @@ const Drawerbar = () => {
             count={2}
             overflowCount={9}
             style={{ background: "#1890ff" }}
-            children={<ShoppingOutlined />}
-          />
+          ><ShoppingOutlined/></Badge>
         }
       />
       <Drawer

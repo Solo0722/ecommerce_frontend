@@ -33,13 +33,13 @@ const Categories = ({ data }) => {
       <div className={categoriesStyles.bodyWrapper}>
         {products.map((product, i) => (
           <Skeleton
+            key={i}
             loading={loading}
             style={{
               width: 240,
             }}
           >
             <Card
-              key={i}
               hoverable
               loading={loading}
               style={{

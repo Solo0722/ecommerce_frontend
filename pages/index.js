@@ -53,7 +53,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ data }) {
-
   const router = useRouter();
 
   return (
@@ -70,6 +69,7 @@ export default function Home({ data }) {
         <Carousel slidesToShow={4} draggable dots={false}>
           {data[3]?.children?.map((brand) => (
             <div
+              key={brand.name}
               onClick={() => router.push(`/category/${brand.name}`)}
               className={homeStyles.brandsContainer}
             >
@@ -82,6 +82,7 @@ export default function Home({ data }) {
         <Carousel slidesToShow={4} draggable dots={false}>
           {data[4]?.children?.map((collection) => (
             <div
+              key={collection.name}
               onClick={() => router.push(`/category/${collection.name}`)}
               className={homeStyles.brandsContainer}
             >
