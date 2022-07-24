@@ -4,6 +4,7 @@ import Banner from "../components/Banner";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import { commerce } from "../lib/commerce";
+import { useRouter } from "next/router";
 
 const banner_items = [
   {
@@ -52,6 +53,9 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ data }) {
+
+  const router = useRouter();
+
   return (
     <div className={homeStyles.homeContainer}>
       <Carousel autoplay>
@@ -64,8 +68,11 @@ export default function Home({ data }) {
         <h2>New Arrivals</h2>
         <h2>Shop by brand</h2>
         <Carousel slidesToShow={4} draggable dots={false}>
-          {data[0]?.children?.map((brand) => (
-            <div className={homeStyles.brandsContainer}>
+          {data[3]?.children?.map((brand) => (
+            <div
+              onClick={() => router.push(`/category/${brand.name}`)}
+              className={homeStyles.brandsContainer}
+            >
               <img src={brand.assets[0].url} />
               <h3>{brand.name}</h3>
             </div>
@@ -73,8 +80,11 @@ export default function Home({ data }) {
         </Carousel>
         <h2>Shop by collections</h2>
         <Carousel slidesToShow={4} draggable dots={false}>
-          {data[1]?.children?.map((collection) => (
-            <div className={homeStyles.brandsContainer}>
+          {data[4]?.children?.map((collection) => (
+            <div
+              onClick={() => router.push(`/category/${collection.name}`)}
+              className={homeStyles.brandsContainer}
+            >
               <img src={collection.assets[0].url} />
               <h3>{collection.name}</h3>
             </div>

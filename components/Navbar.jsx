@@ -1,187 +1,182 @@
-import {
-  ArrowDownOutlined,
-  CaretDownFilled,
-  CaretDownOutlined,
-  DownOutlined,
-  SearchOutlined,
-  ShoppingOutlined,
-  SmileOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Button, Badge, Menu, Dropdown } from "antd";
+import { DownOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Menu, Dropdown } from "antd";
 import React from "react";
 import navStyles from "../styles/Navbar.module.css";
 import { useRouter } from "next/router";
 import Drawerbar from "./Drawerbar";
 import Image from "next/image";
 
-const categoryMenu = (
-  <Menu
-    items={[
-      {
-        key: "1",
-        label: (
-          <a target="_blank" rel="noopener noreferrer" href="">
-            Mobile phones
-          </a>
-        ),
-      },
-      {
-        key: "2",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Tablets
-          </a>
-        ),
-      },
-      {
-        key: "3",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Laptops
-          </a>
-        ),
-      },
-      {
-        key: "4",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Chromebooks
-          </a>
-        ),
-      },
-      {
-        key: "5",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Desktops
-          </a>
-        ),
-      },
-      {
-        key: "6",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Monitors
-          </a>
-        ),
-      },
-      {
-        key: "7",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Accessories
-          </a>
-        ),
-      },
-      {
-        key: "8",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Server
-          </a>
-        ),
-      },
-    ]}
-  />
-);
-const brandMenu = (
-  <Menu
-    items={[
-      {
-        key: "1",
-        label: (
-          <a target="_blank" rel="noopener noreferrer" href="">
-            Apple
-          </a>
-        ),
-      },
-      {
-        key: "2",
-        label: (
-          <a target="_blank" rel="noopener noreferrer">
-            Dell
-          </a>
-        ),
-      },
-      {
-        key: "3",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.luohanacademy.com"
-          >
-            HP
-          </a>
-        ),
-      },
-      {
-        key: "4",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.luohanacademy.com"
-          >
-            Lenovo
-          </a>
-        ),
-      },
-      {
-        key: "5",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.luohanacademy.com"
-          >
-            Samsung
-          </a>
-        ),
-      },
-      {
-        key: "6",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.luohanacademy.com"
-          >
-            Tecno
-          </a>
-        ),
-      },
-      {
-        key: "7",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.luohanacademy.com"
-          >
-            Infinix
-          </a>
-        ),
-      },
-      {
-        key: "8",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.luohanacademy.com"
-          >
-            Panasonic
-          </a>
-        ),
-      },
-    ]}
-  />
-);
+
 
 const Navbar = () => {
   const router = useRouter();
+
+  const categoryMenu = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/mobile phones")}
+            >
+              Mobile phones
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/tablets")}
+            >
+              Tablets
+            </a>
+          ),
+        },
+        {
+          key: "3",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/laptops")}
+            >
+              Laptops
+            </a>
+          ),
+        },
+        {
+          key: "4",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/chromebooks")}
+            >
+              Chromebooks
+            </a>
+          ),
+        },
+        {
+          key: "5",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/desktops")}
+            >
+              Desktops
+            </a>
+          ),
+        },
+        {
+          key: "7",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/accessories")}
+            >
+              Accessories
+            </a>
+          ),
+        },
+      ]}
+    />
+  );
+  const brandMenu = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/apple")}
+            >
+              Apple
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/dell")}
+            >
+              Dell
+            </a>
+          ),
+        },
+        {
+          key: "3",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/hp")}
+            >
+              HP
+            </a>
+          ),
+        },
+        {
+          key: "4",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/lenovo")}
+            >
+              Lenovo
+            </a>
+          ),
+        },
+        {
+          key: "5",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/samsung")}
+            >
+              Samsung
+            </a>
+          ),
+        },
+        {
+          key: "6",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/tecno")}
+            >
+              Tecno
+            </a>
+          ),
+        },
+        {
+          key: "7",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/infinix")}
+            >
+              Infinix
+            </a>
+          ),
+        },
+        {
+          key: "8",
+          label: (
+            <a
+              rel="noopener noreferrer"
+              onClick={() => router.push("/category/panasonic")}
+            >
+              Panasonic
+            </a>
+          ),
+        },
+      ]}
+    />
+  );
 
   return (
     <nav className={navStyles.container}>
@@ -190,7 +185,7 @@ const Navbar = () => {
       <div className={navStyles.navigationContainer}>
         <Button
           type="text"
-          href="/"
+          onClick={() => router.push("/")}
           style={{
             color: `${router.route == "/" ? " #1890ff" : ""}`,
           }}
