@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Drawerbar from "./Drawerbar";
 import Image from "next/image";
 import NavigationDrawerbar from "./NavigationDrawerbar";
+import Searchbar from "./Searchbar";
 
 const Navbar = () => {
   const router = useRouter();
@@ -18,6 +19,17 @@ const Navbar = () => {
           label: (
             <a
               rel="noopener noreferrer"
+              onClick={() => router.push("/category/")}
+            >
+              All
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a
+              rel="noopener noreferrer"
               onClick={() => router.push("/category/mobile-phones")}
             >
               Mobile phones
@@ -25,7 +37,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "2",
+          key: "3",
           label: (
             <a
               rel="noopener noreferrer"
@@ -36,7 +48,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "3",
+          key: "4",
           label: (
             <a
               rel="noopener noreferrer"
@@ -47,7 +59,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "4",
+          key: "5",
           label: (
             <a
               rel="noopener noreferrer"
@@ -58,7 +70,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "5",
+          key: "6",
           label: (
             <a
               rel="noopener noreferrer"
@@ -69,7 +81,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "7",
+          key: "8",
           label: (
             <a
               rel="noopener noreferrer"
@@ -90,6 +102,17 @@ const Navbar = () => {
           label: (
             <a
               rel="noopener noreferrer"
+              onClick={() => router.push("/category/")}
+            >
+              All
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a
+              rel="noopener noreferrer"
               onClick={() => router.push("/category/apple")}
             >
               Apple
@@ -97,7 +120,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "2",
+          key: "3",
           label: (
             <a
               rel="noopener noreferrer"
@@ -108,7 +131,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "3",
+          key: "4",
           label: (
             <a
               rel="noopener noreferrer"
@@ -119,7 +142,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "4",
+          key: "5",
           label: (
             <a
               rel="noopener noreferrer"
@@ -130,7 +153,7 @@ const Navbar = () => {
           ),
         },
         {
-          key: "5",
+          key: "6",
           label: (
             <a
               rel="noopener noreferrer"
@@ -141,35 +164,13 @@ const Navbar = () => {
           ),
         },
         {
-          key: "6",
-          label: (
-            <a
-              rel="noopener noreferrer"
-              onClick={() => router.push("/category/tecno")}
-            >
-              Tecno
-            </a>
-          ),
-        },
-        {
           key: "7",
           label: (
             <a
               rel="noopener noreferrer"
-              onClick={() => router.push("/category/infinix")}
+              onClick={() => router.push("/category/others")}
             >
-              Infinix
-            </a>
-          ),
-        },
-        {
-          key: "8",
-          label: (
-            <a
-              rel="noopener noreferrer"
-              onClick={() => router.push("/category/panasonic")}
-            >
-              Panasonic
+              Others
             </a>
           ),
         },
@@ -181,7 +182,13 @@ const Navbar = () => {
     <nav className={navStyles.container}>
       <div className={navStyles.logoContainer}>
         <NavigationDrawerbar />
-        <Image src="/ripple.png" alt="logo" width="30px" height="30px" />
+        <Image
+          src="/ripple.png"
+          alt="logo"
+          width="30px"
+          height="30px"
+          onClick={() => router.push("/")}
+        />
       </div>
 
       <div className={navStyles.navigationContainer}>
@@ -196,7 +203,7 @@ const Navbar = () => {
         </Button>
         <Dropdown overlay={categoryMenu}>
           <Button type="text">
-            Categories <DownOutlined />
+            Collections <DownOutlined />
           </Button>
         </Dropdown>
         <Dropdown overlay={brandMenu}>
@@ -207,8 +214,13 @@ const Navbar = () => {
       </div>
 
       <div className={navStyles.linksContainer}>
-        <Button type="text" shape="circle" icon={<SearchOutlined />} />
-        <Button type="text" shape="circle" icon={<UserOutlined />} />
+        <Searchbar />
+        <Button
+          type="text"
+          shape="circle"
+          icon={<UserOutlined />}
+          onClick={() => router.push("/auth")}
+        />
         <Drawerbar />
       </div>
     </nav>

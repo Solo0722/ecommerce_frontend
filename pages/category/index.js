@@ -1,25 +1,24 @@
+import { Breadcrumb, Skeleton } from "antd";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import categoriesStyles from "../../styles/Categories.module.css";
-import { commerce } from "../../lib/commerce";
-import { Breadcrumb, Button, Card, Skeleton } from "antd";
-import { AppContext } from "../../context/Context";
-import ProductCard from "../../components/ProductCard";
 import Footer from "../../components/Footer";
+import ProductCard from "../../components/ProductCard";
+import { AppContext } from "../../context/Context";
+import categoriesStyles from "../../styles/Categories.module.css";
 
-const Categories = () => {
+const AllProducts = () => {
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
-  const { fetchProductsByCategory, products } = useContext(AppContext);
+  const { fetchAllProducts, products } = useContext(AppContext);
 
   useEffect(() => {
     !products ? setLoading(true) : setLoading(false);
-  }, [router, products]);
+  }, [products]);
 
   useEffect(() => {
-    fetchProductsByCategory(router.query.category);
-  }, [router]);
+    fetchAllProducts();
+  }, []);
 
   return (
     <div className={categoriesStyles.container}>
@@ -29,10 +28,10 @@ const Categories = () => {
             <a>Home</a>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a>{router.query.category}</a>
+            <a>All Products</a>
           </Breadcrumb.Item>
         </Breadcrumb>
-        <h1>{router.query?.category?.toUpperCase()}</h1>
+        <h1>ALL PRODUCTS</h1>
       </div>
       <div className={categoriesStyles.bodyWrapper}>
         {products?.map((product, i) => (
@@ -51,4 +50,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default AllProducts;

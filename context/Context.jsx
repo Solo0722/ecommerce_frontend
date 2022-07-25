@@ -11,10 +11,15 @@ const Context = ({ children }) => {
     setCart(await commerce.cart.retrieve());
   };
 
-  const fetchProducts = async (category) => {
+  const fetchProductsByCategory = async (category) => {
     const { data } = await commerce.products.list({
       category_slug: [`${category}`],
     });
+    setProducts(data);
+  };
+
+  const fetchAllProducts = async () => {
+    const { data } = await commerce.products.list();
     setProducts(data);
   };
 
@@ -47,12 +52,13 @@ const Context = ({ children }) => {
       value={{
         fetchCart,
         cart,
-        fetchProducts,
+        fetchProductsByCategory,
         products,
         handleRemoveFromCart,
         handleEmptyCart,
         handleAddToCart,
         handleUpdateCartQty,
+        fetchAllProducts,
       }}
     >
       {children}

@@ -21,7 +21,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .authContainer {
@@ -32,9 +32,35 @@ body {
   margin-bottom: 20px;
 }
 
+.successContainer {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bodyWrapper {
+  width: 50%;
+  background: #ddd;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bodyWrapper h2 {
+  font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
-  .authContainer {
-    width:85%;
+  .authContainer,
+  .bodyWrapper {
+    width: 85%;
   }
 }
 

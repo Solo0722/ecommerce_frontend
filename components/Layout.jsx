@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 import HeadDoc from "./HeadDoc";
 import Navbar from "./Navbar";
 
@@ -8,6 +9,7 @@ const Layout = ({ children }) => {
       <HeadDoc />
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 };

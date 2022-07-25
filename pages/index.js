@@ -101,8 +101,6 @@ export default function Home() {
         )}
         <h2>Great Deals for you</h2>
       </div>
-      <Footer />
     </div>
   );
 }
-

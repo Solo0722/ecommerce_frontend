@@ -1,5 +1,5 @@
 import { ShoppingFilled, ShoppingOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { AppContext } from "../context/Context";
@@ -24,6 +24,7 @@ const ProductCard = ({ product }) => {
           onClick={(e) => {
             e.stopPropagation();
             handleAddToCart(product.id, 1);
+            message.success("Product added to cart");
           }}
           style={{ marginBottom: "5px", marginRight: "5px" }}
         />
