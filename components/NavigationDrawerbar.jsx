@@ -14,7 +14,6 @@ import { useRouter } from "next/router";
 
 const NavigationDrawerbar = () => {
   const router = useRouter();
-  console.log(router);
 
   const [visible, setVisible] = useState(false);
 
@@ -33,7 +32,7 @@ const NavigationDrawerbar = () => {
     },
     {
       name: "Laptops",
-      url: "/category/laptop",
+      url: "/category/laptops",
     },
     {
       name: "Chromebooks",
