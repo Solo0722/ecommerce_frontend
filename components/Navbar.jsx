@@ -5,8 +5,7 @@ import navStyles from "../styles/Navbar.module.css";
 import { useRouter } from "next/router";
 import Drawerbar from "./Drawerbar";
 import Image from "next/image";
-
-
+import NavigationDrawerbar from "./NavigationDrawerbar";
 
 const Navbar = () => {
   const router = useRouter();
@@ -19,7 +18,7 @@ const Navbar = () => {
           label: (
             <a
               rel="noopener noreferrer"
-              onClick={() => router.push("/category/mobile phones")}
+              onClick={() => router.push("/category/mobile-phones")}
             >
               Mobile phones
             </a>
@@ -180,7 +179,10 @@ const Navbar = () => {
 
   return (
     <nav className={navStyles.container}>
-      <Image src="/ripple.png" alt="logo" width="30px" height="30px" />
+      <div className={navStyles.logoContainer}>
+        <NavigationDrawerbar />
+        <Image src="/ripple.png" alt="logo" width="30px" height="30px" />
+      </div>
 
       <div className={navStyles.navigationContainer}>
         <Button

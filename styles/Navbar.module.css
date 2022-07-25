@@ -17,12 +17,21 @@
   font-weight: bold;
 }
 
+.logoContainer,
 .linksContainer,
 .navigationContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+}
+
+.navigationDrawerbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-right: 20px;
 }
 
 .navigationContainer button {
@@ -32,4 +41,14 @@
 .linksContainer button:nth-child(1),
 .linksContainer button:nth-child(2) {
   margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .navigationContainer {
+    display: none;
+  }
+
+  .navigationDrawerbar {
+    display: flex;
+  }
 }

@@ -1,9 +1,13 @@
 import { ShoppingOutlined } from "@ant-design/icons";
 import { Badge, Button, Drawer, Empty } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../context/Context";
 
 const Drawerbar = () => {
   const [visible, setVisible] = useState(false);
+
+  const { fetchCart, cart } = useContext(AppContext);
 
   const showDrawer = () => {
     setVisible(true);
@@ -12,6 +16,10 @@ const Drawerbar = () => {
   const onClose = () => {
     setVisible(false);
   };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   const EmptyCart = () => {
     return (
@@ -31,10 +39,12 @@ const Drawerbar = () => {
         onClick={showDrawer}
         icon={
           <Badge
-            count={2}
+            count={cart?.total_items}
             overflowCount={9}
             style={{ background: "#1890ff" }}
-          ><ShoppingOutlined/></Badge>
+          >
+            <ShoppingOutlined />
+          </Badge>
         }
       />
       <Drawer

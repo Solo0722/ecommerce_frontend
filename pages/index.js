@@ -1,10 +1,10 @@
 import { Carousel } from "antd";
 import homeStyles from "../styles/Home.module.css";
 import Banner from "../components/Banner";
-import Image from "next/image";
 import Footer from "../components/Footer";
 import { commerce } from "../lib/commerce";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const banner_items = [
   {
@@ -45,19 +45,23 @@ const banner_items = [
   },
 ];
 
-export const getStaticProps = async () => {
-  const { data } = await commerce.categories.list();
-  return {
-    props: { data },
-  };
-};
-
-export default function Home({ data }) {
+export default function Home() {
   const router = useRouter();
+
+  const [categories, setCategories] = useState(null);
+
+  const fetchCategories = async () => {
+    const { data } = await commerce.categories.list();
+    setCategories(data);
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <div className={homeStyles.homeContainer}>
-      <Carousel autoplay>
+      <Carousel autoplay style={{ width: "100%", marginRight: "0px" }}>
         {banner_items.map((item, i) => (
           <Banner item={item} key={i} />
         ))}
@@ -66,34 +70,39 @@ export default function Home({ data }) {
         <h2>Best Selling Products</h2>
         <h2>New Arrivals</h2>
         <h2>Shop by brand</h2>
-        <Carousel slidesToShow={4} draggable dots={false}>
-          {data[3]?.children?.map((brand) => (
-            <div
-              key={brand.name}
-              onClick={() => router.push(`/category/${brand.name}`)}
-              className={homeStyles.brandsContainer}
-            >
-              <img src={brand.assets[0].url} />
-              <h3>{brand.name}</h3>
-            </div>
-          ))}
-        </Carousel>
+        {categories && (
+          <Carousel slidesToShow={3} draggable dots={false}>
+            {categories[3]?.children?.map((brand) => (
+              <div
+                key={brand.name}
+                onClick={() => router.push(`/category/${brand.name}`)}
+                className={homeStyles.brandsContainer}
+              >
+                <img src={brand.assets[0].url} />
+                <h3>{brand.name}</h3>
+              </div>
+            ))}
+          </Carousel>
+        )}
         <h2>Shop by collections</h2>
-        <Carousel slidesToShow={4} draggable dots={false}>
-          {data[4]?.children?.map((collection) => (
-            <div
-              key={collection.name}
-              onClick={() => router.push(`/category/${collection.name}`)}
-              className={homeStyles.brandsContainer}
-            >
-              <img src={collection.assets[0].url} />
-              <h3>{collection.name}</h3>
-            </div>
-          ))}
-        </Carousel>
+        {categories && (
+          <Carousel slidesToShow={3} draggable dots={false}>
+            {categories[4]?.children?.map((collection) => (
+              <div
+                key={collection.name}
+                onClick={() => router.push(`/category/${collection.name}`)}
+                className={homeStyles.brandsContainer}
+              >
+                <img src={collection.assets[0].url} />
+                <h3>{collection.name}</h3>
+              </div>
+            ))}
+          </Carousel>
+        )}
         <h2>Great Deals for you</h2>
       </div>
       <Footer />
     </div>
   );
 }
+
