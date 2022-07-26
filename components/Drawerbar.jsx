@@ -8,6 +8,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AppContext } from "../context/Context";
 import cartStyles from "../styles/Cart.module.css";
 import { BsCartX } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 const Drawerbar = () => {
   const [visible, setVisible] = useState(false);
@@ -18,11 +19,12 @@ const Drawerbar = () => {
   const showDrawer = () => {
     setVisible(true);
   };
-  console.log(cart);
 
   const onClose = () => {
     setVisible(false);
   };
+
+  const router = useRouter();
 
   useEffect(() => {
     fetchCart();
@@ -80,10 +82,15 @@ const Drawerbar = () => {
         <div className={cartStyles.totalPriceContainer}>
           <h3>
             <span>Subtotal</span>
-            <span>{cart?.subtotal.formatted_with_symbol}</span>
+            <span>{cart?.subtotal?.formatted_with_symbol}</span>
           </h3>
-          <Button type="primary" block shape="round">
-            PAY WITH STRIPE
+          <Button
+            type="primary"
+            block
+            shape="round"
+            onClick={() => router.push("/checkout")}
+          >
+            GO TO CHECKOUT
           </Button>
         </div>
       </div>

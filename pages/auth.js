@@ -3,7 +3,7 @@ import { Button, Form, Input } from "antd";
 import Footer from "../components/Footer";
 
 const Auth = () => {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const [form] = Form.useForm();
 
@@ -23,7 +23,7 @@ const Auth = () => {
   return (
     <>
       <div className="authContainer">
-        <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
+        <h2>{isSignUp ? "Create a new account" : "Sign in to your account"}</h2>
         <Form
           name="basic"
           initialValues={{

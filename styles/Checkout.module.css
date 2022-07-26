@@ -1,0 +1,29 @@
+.container {
+  width: 45%;
+  margin: 0 auto;
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 2.6px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.container h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.addressFormWrapper {
+  margin-top: 20px;
+}
+
+.reviewContainer {
+  width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    width: 85%;
+  }
+}

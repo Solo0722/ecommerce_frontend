@@ -6,6 +6,10 @@ export const AppContext = createContext();
 const Context = ({ children }) => {
   const [cart, setCart] = useState(null);
   const [products, setProducts] = useState(null);
+  const [checkoutToken, setCheckoutToken] = useState(null);
+  const [shippingData, setShippingData] = useState(null);
+  const [order, setOrder] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve());
@@ -47,18 +51,44 @@ const Context = ({ children }) => {
     setCart(cart);
   };
 
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+
+    setCart(null);
+  };
+
+  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      const incomingOrder = await commerce.checkout.capture(
+        checkoutTokenId,
+        newOrder
+      );
+      setOrder(incomingOrder);
+      refreshCart();
+    } catch (error) {
+      setErrorMessage(error.data.error.message);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
         fetchCart,
-        cart,
         fetchProductsByCategory,
-        products,
         handleRemoveFromCart,
         handleEmptyCart,
         handleAddToCart,
         handleUpdateCartQty,
         fetchAllProducts,
+        setCheckoutToken,
+        setShippingData,
+        handleCaptureCheckout,
+        shippingData,
+        order,
+        errorMessage,
+        products,
+        cart,
+        checkoutToken,
       }}
     >
       {children}
