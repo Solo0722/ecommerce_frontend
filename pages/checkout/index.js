@@ -55,7 +55,7 @@ const Checkout = () => {
   return (
     <div className={checkoutStyles.container}>
       <h2>Checkout</h2>
-      <Steps current={current} size="small">
+      <Steps current={current} size="small" responsive>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
         ))}

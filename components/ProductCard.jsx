@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className={cardStyles.container}
+      className={`${cardStyles.container} animate__animated animate__fadeInUp`}
       onClick={() => router.push(`/productDetails/${product.id}`)}
     >
       <img src={product.image.url} alt="product-image" />

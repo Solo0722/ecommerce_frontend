@@ -88,7 +88,10 @@ const Drawerbar = () => {
             type="primary"
             block
             shape="round"
-            onClick={() => router.push("/checkout")}
+            onClick={() => {
+              router.push("/checkout");
+              onClose();
+            }}
           >
             GO TO CHECKOUT
           </Button>

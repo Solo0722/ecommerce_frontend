@@ -16,6 +16,7 @@
 
 .addressFormWrapper {
   margin-top: 20px;
+  width: 100%;
 }
 
 .reviewContainer {
@@ -24,6 +25,6 @@
 
 @media screen and (max-width: 900px) {
   .container {
-    width: 85%;
+    width: 90%;
   }
 }

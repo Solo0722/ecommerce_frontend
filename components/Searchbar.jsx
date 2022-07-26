@@ -1,10 +1,13 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Drawer, Input } from "antd";
+import { Button, Drawer, Form, Input } from "antd";
+import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { AppContext } from "../context/Context";
 
 const Searchbar = () => {
   const [visible, setVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   const { fetchCart, cart } = useContext(AppContext);
 
@@ -23,6 +26,11 @@ const Searchbar = () => {
     "Samsung Galaxy A20",
   ];
 
+  const handleSearch = () => {
+    onClose();
+    router.push(`/search/${searchTerm}`);
+  };
+
   return (
     <>
       <Button
@@ -39,11 +47,24 @@ const Searchbar = () => {
         height={"27%"}
         headerStyle={{ display: "none" }}
       >
-        <Input
-          suffix={<SearchOutlined />}
-          placeholder="Search..."
-          style={{ borderRadius: "20px" }}
-        />
+        <Form>
+          <Input
+            suffix={
+              <Button
+                type="text"
+                shape="circle"
+                icon={<SearchOutlined />}
+                onClick={handleSearch}
+                htmlType="submit"
+              />
+            }
+            size="small"
+            placeholder="Search..."
+            style={{ borderRadius: "20px" }}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </Form>
         <div>
           <h3 style={{ margin: "5px 0" }}>Popular Searches</h3>
           {popularSearches.map((p, i) => (

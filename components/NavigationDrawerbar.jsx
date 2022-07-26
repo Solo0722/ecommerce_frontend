@@ -85,7 +85,7 @@ const NavigationDrawerbar = () => {
         placement="left"
         onClose={onClose}
         visible={visible}
-        width={"50%"}
+        width={"65%"}
         headerStyle={{ display: "none" }}
         bodyStyle={{ margin: "0px", padding: "10px 0px" }}
       >
@@ -95,7 +95,10 @@ const NavigationDrawerbar = () => {
               icon={<HomeOutlined />}
               type="text"
               block
-              onClick={() => router.push("/")}
+              onClick={() => {
+                router.push("/");
+                onClose();
+              }}
               style={{
                 textAlign: "left",
                 padding: "0",
@@ -110,7 +113,10 @@ const NavigationDrawerbar = () => {
               icon={<GroupOutlined />}
               type="text"
               block
-              onClick={() => router.push("/category")}
+              onClick={() => {
+                router.push("/category");
+                onClose();
+              }}
               style={{
                 textAlign: "left",
                 padding: "0",
@@ -133,7 +139,10 @@ const NavigationDrawerbar = () => {
                 <Button
                   type="text"
                   block
-                  onClick={() => router.push(c.url)}
+                  onClick={() => {
+                    router.push(c.url);
+                    onClose();
+                  }}
                   style={{
                     textAlign: "left",
                     color: `${router.asPath === c.url ? "#1890ff" : ""}`,
@@ -149,7 +158,10 @@ const NavigationDrawerbar = () => {
               icon={<BranchesOutlined />}
               type="text"
               block
-              onClick={() => router.push("/category")}
+              onClick={() => {
+                router.push("/category");
+                onClose();
+              }}
               style={{
                 textAlign: "left",
                 padding: "0",
@@ -171,7 +183,10 @@ const NavigationDrawerbar = () => {
               <Button
                 type="text"
                 block
-                onClick={() => router.push(b.url)}
+                onClick={() => {
+                  router.push(b.url);
+                  onClose();
+                }}
                 style={{
                   textAlign: "left",
                   color: `${router.asPath === b.url ? "#1890ff" : ""}`,

@@ -27,6 +27,13 @@ const Context = ({ children }) => {
     setProducts(data);
   };
 
+  const fetchProductsBySearch = async (searchTerm) => {
+    const { data } = await commerce.products.list({
+      query: `${searchTerm}`,
+    });
+    setProducts(data);
+  };
+
   const handleAddToCart = async (productId, quantity) => {
     const { cart } = await commerce.cart.add(productId, quantity);
 
@@ -75,6 +82,7 @@ const Context = ({ children }) => {
       value={{
         fetchCart,
         fetchProductsByCategory,
+        fetchProductsBySearch,
         handleRemoveFromCart,
         handleEmptyCart,
         handleAddToCart,

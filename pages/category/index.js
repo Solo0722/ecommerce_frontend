@@ -1,4 +1,4 @@
-import { Breadcrumb, Skeleton } from "antd";
+import { Breadcrumb, Skeleton, Spin } from "antd";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/Footer";
@@ -34,17 +34,21 @@ const AllProducts = () => {
         <h1>ALL PRODUCTS</h1>
       </div>
       <div className={categoriesStyles.bodyWrapper}>
-        {products?.map((product, i) => (
-          <Skeleton
-            key={i}
-            loading={loading}
-            style={{
-              width: 240,
-            }}
-          >
-            <ProductCard product={product} />
-          </Skeleton>
-        ))}
+        {!products ? (
+          <Spin />
+        ) : (
+          products?.map((product, i) => (
+            <Skeleton
+              key={i}
+              loading={loading}
+              style={{
+                width: 240,
+              }}
+            >
+              <ProductCard product={product} />
+            </Skeleton>
+          ))
+        )}
       </div>
     </div>
   );

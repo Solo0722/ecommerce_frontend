@@ -116,7 +116,6 @@ const AddressForm = ({ next, checkoutToken }) => {
           }}
         >
           <Form.Item
-            label="First Name"
             name="firstName"
             rules={[
               {
@@ -127,11 +126,10 @@ const AddressForm = ({ next, checkoutToken }) => {
             ]}
             style={{ width: "49%" }}
           >
-            <Input />
+            <Input placeholder="First name" />
           </Form.Item>
 
           <Form.Item
-            label="Last Name"
             name="lastName"
             style={{ width: "49%" }}
             rules={[
@@ -142,7 +140,7 @@ const AddressForm = ({ next, checkoutToken }) => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Last name" />
           </Form.Item>
         </div>
 
@@ -155,7 +153,6 @@ const AddressForm = ({ next, checkoutToken }) => {
           }}
         >
           <Form.Item
-            label="Email"
             name="email"
             style={{ width: "49%" }}
             rules={[
@@ -166,10 +163,9 @@ const AddressForm = ({ next, checkoutToken }) => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Email" />
           </Form.Item>
           <Form.Item
-            label="Address"
             name="address1"
             style={{ width: "49%" }}
             rules={[
@@ -179,7 +175,7 @@ const AddressForm = ({ next, checkoutToken }) => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="Address" />
           </Form.Item>
         </div>
         <div
@@ -191,7 +187,6 @@ const AddressForm = ({ next, checkoutToken }) => {
           }}
         >
           <Form.Item
-            label="City"
             name="city"
             style={{ width: "49%" }}
             rules={[
@@ -201,10 +196,9 @@ const AddressForm = ({ next, checkoutToken }) => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="City" />
           </Form.Item>
           <Form.Item
-            label="ZIP / Postal Code"
             name="zip"
             style={{ width: "49%" }}
             rules={[
@@ -214,7 +208,7 @@ const AddressForm = ({ next, checkoutToken }) => {
               },
             ]}
           >
-            <Input />
+            <Input placeholder="ZIP / Postal code" />
           </Form.Item>
         </div>
         <div
@@ -226,7 +220,6 @@ const AddressForm = ({ next, checkoutToken }) => {
           }}
         >
           <Form.Item
-            label="Shipping Country"
             name="shippingCountry"
             style={{ width: "49%" }}
             rules={[
@@ -239,7 +232,7 @@ const AddressForm = ({ next, checkoutToken }) => {
             <Select
               value={shippingCountry}
               onChange={(e) => setShippingCountry(e)}
-              placeholder="Select shipping country"
+              placeholder="Shipping country"
             >
               {countries.map((c, i) => (
                 <Option value={c.id} key={i}>
@@ -249,7 +242,6 @@ const AddressForm = ({ next, checkoutToken }) => {
             </Select>
           </Form.Item>
           <Form.Item
-            label="Shipping Subdivision"
             name="shippingSubdivision"
             style={{ width: "49%" }}
             rules={[
@@ -262,7 +254,7 @@ const AddressForm = ({ next, checkoutToken }) => {
             <Select
               value={shippingSubdivision}
               onChange={(e) => setShippingSubdivision(e)}
-              placeholder="Select shipping subdivision"
+              placeholder="Shipping subdivision"
             >
               {subdivisions.map((s, i) => (
                 <Option value={s.id} key={i}>
@@ -281,7 +273,6 @@ const AddressForm = ({ next, checkoutToken }) => {
           }}
         >
           <Form.Item
-            label="Shipping Option"
             name="shippingOption"
             style={{ width: "49%" }}
             rules={[
@@ -294,7 +285,7 @@ const AddressForm = ({ next, checkoutToken }) => {
             <Select
               value={shippingOption}
               onChange={(e) => setShippingOption(e)}
-              placeholder="Select shipping option"
+              placeholder="Shipping option"
             >
               {options.map((option, i) => (
                 <Option value={option.id} key={i}>
