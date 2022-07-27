@@ -15,6 +15,8 @@ const Context = ({ children }) => {
     setCart(await commerce.cart.retrieve());
   };
 
+  
+
   const fetchProductsByCategory = async (category) => {
     const { data } = await commerce.products.list({
       category_slug: [`${category}`],

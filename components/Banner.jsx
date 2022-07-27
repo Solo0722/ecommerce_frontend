@@ -11,7 +11,9 @@ const Banner = ({ item }) => {
       <p>{item.brand}</p>
       <h2 className="animate__animated animate__fadeInUp">{item.price}</h2>
       <h1 className="animate__animated animate__fadeInUp">{item.name}</h1>
-      <Button type="primary">Shop now</Button>
+      <Button type="primary" style={{ zIndex: 10 }}>
+        Buy now
+      </Button>
       <div className={bannerStyles.bannerDescription}>
         <h3>Description</h3>
         <p>{item.desc}</p>
