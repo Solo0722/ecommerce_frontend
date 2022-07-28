@@ -10,8 +10,13 @@ const ProductDetail = () => {
   const router = useRouter();
   const [product, setProduct] = useState(null);
 
-  const { fetchCart, cart, handleRemoveFromCart, handleUpdateCartQty,handleAddToCart } =
-    useContext(AppContext);
+  const {
+    fetchCart,
+    cart,
+    handleRemoveFromCart,
+    handleUpdateCartQty,
+    handleAddToCart,
+  } = useContext(AppContext);
 
   const fetchSingleProduct = async (productId) => {
     const data = await commerce.products.retrieve(productId);
@@ -37,7 +42,10 @@ const ProductDetail = () => {
               style={{ width: "100%", height: "100%" }}
             >
               {product.assets.map((asset) => (
-                <div className={productDetailStyles.imgSecondaryContainer}>
+                <div
+                  className={productDetailStyles.imgSecondaryContainer}
+                  key={asset.id}
+                >
                   <img src={asset.url} alt="image" />
                 </div>
               ))}
