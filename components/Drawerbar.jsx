@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 const Drawerbar = () => {
   const [visible, setVisible] = useState(false);
 
-  const { fetchCart, cart, handleRemoveFromCart, handleUpdateCartQty } =
+  const { fetchCart, cart, handleRemoveFromCart, handleUpdateCartQty,handleEmptyCart } =
     useContext(AppContext);
 
   const showDrawer = () => {
@@ -130,6 +130,15 @@ const Drawerbar = () => {
               }}
             >
               GO TO CHECKOUT
+            </Button>
+            <Button
+              block
+              shape="round"
+              type="primary"
+              style={{ background: "red", margin: "10px 0", border: "none" }}
+              onClick={handleEmptyCart}
+            >
+              Empty Cart
             </Button>
           </div>
         }
