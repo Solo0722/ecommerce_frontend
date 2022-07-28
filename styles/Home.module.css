@@ -22,3 +22,10 @@
   height: 90%;
   transition: 0.5s all ease-in-out;
 }
+
+.bestSellingWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

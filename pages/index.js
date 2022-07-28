@@ -1,10 +1,11 @@
-import { Carousel } from "antd";
+import { Carousel, notification } from "antd";
 import homeStyles from "../styles/Home.module.css";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import { commerce } from "../lib/commerce";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
 
 const banner_items = [
   {
@@ -49,14 +50,32 @@ export default function Home() {
   const router = useRouter();
 
   const [categories, setCategories] = useState(null);
+  const [bestSelling, setBestSelling] = useState(null);
+  const [newArrivals, setNewArrivals] = useState(null);
 
   const fetchCategories = async () => {
     const { data } = await commerce.categories.list();
     setCategories(data);
   };
 
+  const bestSellingProducts = async () => {
+    const { data } = await commerce.products.list({
+      category_slug: [`${"Best-Selling"}`],
+    });
+    setBestSelling(data);
+  };
+
+  const newArrivalProducts = async () => {
+    const { data } = await commerce.products.list({
+      category_slug: [`${"New-Arrivals"}`],
+    });
+    setNewArrivals(data);
+  };
+
   useEffect(() => {
     fetchCategories();
+    bestSellingProducts();
+    newArrivalProducts();
   }, []);
 
   return (
@@ -68,7 +87,17 @@ export default function Home() {
       </Carousel>
       <div className={homeStyles.secondaryContainer}>
         <h2>Best Selling Products</h2>
+        <div className={homeStyles.bestSellingWrapper}>
+          {bestSelling?.map((bs, i) => (
+            <ProductCard key={i} product={bs} />
+          ))}
+        </div>
         <h2>New Arrivals</h2>
+        <div className={homeStyles.bestSellingWrapper}>
+          {newArrivals?.map((na, i) => (
+            <ProductCard key={i} product={na} />
+          ))}
+        </div>
         <h2>Shop by brand</h2>
         {categories && (
           <Carousel slidesToShow={3} draggable dots={false}>
@@ -99,7 +128,7 @@ export default function Home() {
             ))}
           </Carousel>
         )}
-        <h2>Great Deals for you</h2>
+        {/* <h2>Great Deals for you</h2> */}
       </div>
     </div>
   );

@@ -79,23 +79,6 @@ const Drawerbar = () => {
             </div>
           </div>
         ))}
-        <div className={cartStyles.totalPriceContainer}>
-          <h3>
-            <span>Subtotal</span>
-            <span>{cart?.subtotal?.formatted_with_symbol}</span>
-          </h3>
-          <Button
-            type="primary"
-            block
-            shape="round"
-            onClick={() => {
-              router.push("/checkout");
-              onClose();
-            }}
-          >
-            GO TO CHECKOUT
-          </Button>
-        </div>
       </div>
     );
   };
@@ -131,6 +114,30 @@ const Drawerbar = () => {
         onClose={onClose}
         visible={visible}
         headerStyle={{ borderBottom: "none" }}
+        footer={
+          <div className={cartStyles.totalPriceContainer}>
+            <h3>
+              <span>Subtotal</span>
+              <span>{cart?.subtotal?.formatted_with_symbol}</span>
+            </h3>
+            <Button
+              type="primary"
+              block
+              shape="round"
+              onClick={() => {
+                router.push("/checkout");
+                onClose();
+              }}
+            >
+              GO TO CHECKOUT
+            </Button>
+          </div>
+        }
+        footerStyle={{
+          display: `${
+            !cart || cart?.line_items?.length === 0 ? "none" : "block"
+          }`,
+        }}
       >
         {!cart || cart?.line_items?.length === 0 ? (
           <EmptyCart />
