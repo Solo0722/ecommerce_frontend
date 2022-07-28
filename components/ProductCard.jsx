@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
     >
       <img src={product.image.url} alt="product-image" />
       <h3>{product.name}</h3>
-      <p dangerouslySetInnerHTML={{ __html: product.description }} />
+      {/* <p dangerouslySetInnerHTML={{ __html: product.description }} /> */}
       <div className={cardStyles.priceContainer}>
         <p>{product.price.formatted_with_symbol}</p>
         <Button

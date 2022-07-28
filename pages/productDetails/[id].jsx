@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import productDetailStyles from "../../styles/ProductDetail.module.css";
-import { Spin, Rate, Button, Carousel } from "antd";
+import { Spin, Rate, Button, Carousel, message } from "antd";
 import { commerce } from "../../lib/commerce";
 import { AppContext } from "../../context/Context";
 import ProductCard from "../../components/ProductCard";
@@ -10,7 +10,7 @@ const ProductDetail = () => {
   const router = useRouter();
   const [product, setProduct] = useState(null);
 
-  const { fetchCart, cart, handleRemoveFromCart, handleUpdateCartQty } =
+  const { fetchCart, cart, handleRemoveFromCart, handleUpdateCartQty,handleAddToCart } =
     useContext(AppContext);
 
   const fetchSingleProduct = async (productId) => {
@@ -79,7 +79,14 @@ const ProductDetail = () => {
               value={parseFloat(product.attributes[0].value)}
               style={{ width: "100%", marginBottom: "20px" }}
             />
-            <Button type="primary" size="large">
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => {
+                handleAddToCart(product.id, 1);
+                message.success("Product added to cart");
+              }}
+            >
               Add to cart
             </Button>
           </div>
