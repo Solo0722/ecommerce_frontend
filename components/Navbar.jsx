@@ -1,15 +1,26 @@
 import { DownOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Menu, Dropdown } from "antd";
-import React from "react";
+import { Button, Menu, Dropdown, Avatar } from "antd";
+import React, { useContext } from "react";
 import navStyles from "../styles/Navbar.module.css";
 import { useRouter } from "next/router";
 import Drawerbar from "./Drawerbar";
 import Image from "next/image";
 import NavigationDrawerbar from "./NavigationDrawerbar";
 import Searchbar from "./Searchbar";
+import { AppContext } from "../context/Context";
 
 const Navbar = () => {
   const router = useRouter();
+
+  const { user, setUser } = useContext(AppContext);
+
+  const signOut = () => {
+    // if (typeof window !== "undefined") {
+    //   localStorage.clear();
+    // }
+    localStorage.clear();
+    setUser(null);
+  };
 
   const categoryMenu = (
     <Menu
@@ -177,6 +188,24 @@ const Navbar = () => {
       ]}
     />
   );
+  const avatarMenu = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: <a rel="noopener noreferrer">{user?.result?.email}</a>,
+        },
+        {
+          key: "2",
+          label: (
+            <a rel="noopener noreferrer" onClick={signOut}>
+              Sign out
+            </a>
+          ),
+        },
+      ]}
+    />
+  );
 
   return (
     <nav className={navStyles.container}>
@@ -215,12 +244,23 @@ const Navbar = () => {
 
       <div className={navStyles.linksContainer}>
         <Searchbar />
-        <Button
-          type="text"
-          shape="circle"
-          icon={<UserOutlined />}
-          onClick={() => router.push("/auth")}
-        />
+        {user ? (
+          <Dropdown overlay={avatarMenu}>
+            <Avatar
+              style={{ cursor: "pointer" }}
+              size="small"
+              children={user?.result?.firstName?.slice(0, 1)}
+            />
+          </Dropdown>
+        ) : (
+          <Button
+            type="text"
+            shape="circle"
+            icon={<UserOutlined />}
+            onClick={() => router.push("/auth")}
+          />
+        )}
+
         <Drawerbar />
       </div>
     </nav>

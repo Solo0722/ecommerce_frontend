@@ -17,6 +17,7 @@
     "@stripe/stripe-js": "^1.32.0",
     "animate.css": "^4.1.1",
     "antd": "^4.21.7",
+    "axios": "^0.27.2",
     "canvas-confetti": "^1.5.1",
     "next": "12.1.6",
     "next-pwa": "^5.5.2",
@@ -26,6 +27,7 @@
     "react-icons": "^4.4.0",
     "stripe": "^9.14.0"
   },
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6"

@@ -1,5 +1,5 @@
 .homeContainer {
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
 }
 
 .secondaryContainer h2 {
@@ -28,4 +28,19 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.horizontalOverflowContainer {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.horizontalOverflowContainer::-webkit-scrollbar {
+  display: none;
 }

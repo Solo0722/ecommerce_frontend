@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { commerce } from "../lib/commerce";
 
 export const AppContext = createContext();
@@ -10,12 +10,19 @@ const Context = ({ children }) => {
   const [shippingData, setShippingData] = useState(null);
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [user, setUser] = useState(
+    typeof window !== "undefined" && JSON.parse(localStorage.getItem("user"))
+  );
+
+  useEffect(() => {
+    setUser(user);
+    typeof window !== "undefined" &&
+      localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve());
   };
-
-  
 
   const fetchProductsByCategory = async (category) => {
     const { data } = await commerce.products.list({
@@ -99,6 +106,8 @@ const Context = ({ children }) => {
         products,
         cart,
         checkoutToken,
+        user,
+        setUser,
       }}
     >
       {children}

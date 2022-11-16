@@ -4,7 +4,7 @@ import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import { commerce } from "../lib/commerce";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 
 const banner_items = [
@@ -80,7 +80,11 @@ export default function Home() {
 
   return (
     <div className={homeStyles.homeContainer}>
-      <Carousel autoplay style={{ width: "100%", marginRight: "0px" }}>
+      <Carousel
+        autoplay
+        style={{ width: "100%", marginRight: "0px" }}
+        effect="fade"
+      >
         {banner_items.map((item, i) => (
           <Banner item={item} key={i} />
         ))}
@@ -100,35 +104,36 @@ export default function Home() {
         </div>
         <h2>Shop by brand</h2>
         {categories && (
-          <Carousel slidesToShow={3} draggable dots={false}>
+          <div className={homeStyles.horizontalOverflowContainer}>
             {categories[3]?.children?.map((brand) => (
-              <div
-                key={brand.name}
-                onClick={() => router.push(`/category/${brand.name}`)}
-                className={homeStyles.brandsContainer}
-              >
-                <img src={brand.assets[0].url} />
-                <h3>{brand.name}</h3>
+              <div style={{ display: "inline-block" }} key={brand.name}>
+                <div
+                  onClick={() => router.push(`/category/${brand.name}`)}
+                  className={homeStyles.brandsContainer}
+                >
+                  <img src={brand.assets[0].url} alt="brand-img" />
+                  <h3>{brand.name}</h3>
+                </div>
               </div>
             ))}
-          </Carousel>
+          </div>
         )}
         <h2>Shop by collections</h2>
         {categories && (
-          <Carousel slidesToShow={3} draggable dots={false}>
+          <div className={homeStyles.horizontalOverflowContainer}>
             {categories[4]?.children?.map((collection) => (
-              <div
-                key={collection.name}
-                onClick={() => router.push(`/category/${collection.name}`)}
-                className={homeStyles.brandsContainer}
-              >
-                <img src={collection.assets[0].url} />
-                <h3>{collection.name}</h3>
+              <div style={{ display: "inline-block" }} key={collection.name}>
+                <div
+                  onClick={() => router.push(`/category/${collection.name}`)}
+                  className={homeStyles.brandsContainer}
+                >
+                  <img src={collection.assets[0].url} />
+                  <h3>{collection.name}</h3>
+                </div>
               </div>
             ))}
-          </Carousel>
+          </div>
         )}
-        {/* <h2>Great Deals for you</h2> */}
       </div>
     </div>
   );

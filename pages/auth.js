@@ -1,15 +1,34 @@
-import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
-import Footer from "../components/Footer";
+import React, { useContext, useState } from "react";
+import { Button, Form, Input, message } from "antd";
+import axios from "axios";
+import { AppContext } from "../context/Context";
+import { useRouter } from "next/router";
+
+const baseURL = "http://localhost:5000";
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const { user, setUser } = useContext(AppContext);
 
+  const router = useRouter();
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log("Success:", values);
-    form.resetFields();
+
+    try {
+      const { data } = await axios.post(
+        `${baseURL}/auth/${isSignUp ? "signup" : "signin"}`,
+        values
+      );
+      console.log(data);
+      setUser(data);
+      form.resetFields();
+      router.push("/");
+    } catch (error) {
+      console.log(error?.response?.data?.message);
+      message.error(error?.response?.data?.message);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -25,6 +44,7 @@ const Auth = () => {
       <div className="authContainer">
         <h2>{isSignUp ? "Create a new account" : "Sign in to your account"}</h2>
         <Form
+          form={form}
           name="basic"
           initialValues={{
             remember: true,
